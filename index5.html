@@ -8,11 +8,74 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .cabe {
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
         .esse {
             display: flex;
-            align-items: center;
+            align-items: start;
             justify-content: center;
-            height: 90vh;
+            min-height: 80vh; 
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .book-container {
+            display: flex;
+            justify-content: center;
+        }
+        .book {
+            margin: 10px;
+            cursor: pointer;
+        }
+        .book img {
+            width: 150px;
+            height: 200px;
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease;
+        }
+        .book img:hover {
+            transform: scale(1.1);
+        }
+        .alert-container {
+            background-color: #005f32;
+            color: #fff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color:;
+            padding: 20px;
+            border: 1px solid black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            max-height: 60%;
+            overflow-y: auto;
+            margin-top: 150px;
+            border: none;
+            border-radius: 10px;
+
+        }
+        .alert-container p {
+            margin-bottom: 10px;
+        }
+        .alert-container button {
+            background-color: #f2e713;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            float: right;
+        }
+        .alert-container button:hover {
+            background-color: #a79e04;
         }
     </style>
 </head>
@@ -24,27 +87,45 @@
     <div class="esse">
         <div class="book-container">
             <div class="book">
-                <img src="img/alienta.jpg" alt="O Alienista" onclick="ali()">
+                <img src="img/alienta.jpg" alt="O Alienista" onclick="criarContainer('ali')">
             </div>
             <div class="book">
-                <img src="img/jaco.jpg" alt="Esaú e Jacó" onclick="jaco()">
+                <img src="img/jaco.jpg" alt="Esaú e Jacó" onclick="criarContainer('jaco')">
             </div>
             <div class="book">
-                <img src="img/helena.jpg" alt="Helena" onclick="ele()">
+                <img src="img/helena.jpg" alt="Helena" onclick="criarContainer('ele')">
             </div>
         </div>
     </div>
+
     <script>
-        function ali() {
-            alert('A narrativa se passa na cidade fictícia de Itaguaí, onde o protagonista, Dr. Simão Bacamarte, é um médico renomado que decide dedicar-se ao estudo da mente humana. Ele funda a Casa Verde, um asilo para doentes mentais, com o objetivo de tratar e curar os insanos.Inicialmente, Bacamarte interna apenas aqueles que apresentam comportamentos claramente anormais. No entanto, à medida que aprofunda seus estudos, começa a ver sintomas de loucura em mais e mais pessoas, incluindo aqueles que antes eram considerados perfeitamente saudáveis. Eventualmente, a maioria dos habitantes da cidade acaba internada na Casa Verde.A situação leva a uma série de eventos cômicos e trágicos, culminando em uma reviravolta surpreendente: Bacamarte, após uma profunda reflexão, decide que ele próprio é o único verdadeiramente são e que, portanto, deve ser internado.')
-        }
-        function jaco(){
-            alert("A história começa com o nascimento dos gêmeos Pedro e Paulo. Desde cedo, os dois irmãos mostram-se completamente diferentes em temperamento e ideias, refletindo o conflito entre conservadorismo e progresso. A mãe, Natividade, consulta uma vidente para saber sobre o futuro dos filhos, mas recebe respostas enigmáticas.")
-        }
-        function ele(){
-            alert("A história começa com a morte do conselheiro Vale, um homem respeitado e influente. Em seu testamento, ele revela a existência de uma filha ilegítima, Helena, e determina que ela deve ser aceita como membro da família por seu filho legítimo, Estácio, e sua irmã, Úrsula. Helena passa a viver na chácara do Andaraí com os dois.À medida que a história avança, Helena conquista a todos com sua beleza, inteligência e bondade. No entanto, segredos sobre seu passado começam a emergir, criando tensões e desafios para a jovem.")
+        function criarContainer(livro) {
+            let texto = '';
+
+            switch (livro) {
+                case 'ali':
+                    texto = `A narrativa se passa na cidade fictícia de Itaguaí, onde o protagonista, Dr. Simão Bacamarte, é um médico renomado que decide dedicar-se ao estudo da mente humana. Ele funda a Casa Verde, um asilo para doentes mentais, com o objetivo de tratar e curar os insanos.Inicialmente, Bacamarte interna apenas aqueles que apresentam comportamentos claramente anormais. No entanto, à medida que aprofunda seus estudos, começa a ver sintomas de loucura em mais e mais pessoas, incluindo aqueles que antes eram considerados perfeitamente saudáveis. Eventualmente, a maioria dos habitantes da cidade acaba internada na Casa Verde.A situação leva a uma série de eventos cômicos e trágicos, culminando em uma reviravolta surpreendente: Bacamarte, após uma profunda reflexão, decide que ele próprio é o único verdadeiramente são e que, portanto, deve ser internado.`;
+                    break;
+                case 'jaco':
+                    texto = `A história começa com o nascimento dos gêmeos Pedro e Paulo. Desde cedo, os dois irmãos mostram-se completamente diferentes em temperamento e ideias, refletindo o conflito entre conservadorismo e progresso. A mãe, Natividade, consulta uma vidente para saber sobre o futuro dos filhos, mas recebe respostas enigmáticas.`;
+                    break;
+                case 'ele':
+                    texto = `A história começa com a morte do conselheiro Vale, um homem respeitado e influente. Em seu testamento, ele revela a existência de uma filha ilegítima, Helena, e determina que ela deve ser aceita como membro da família por seu filho legítimo, Estácio, e sua irmã, Úrsula. Helena passa a viver na chácara do Andaraí com os dois.À medida que a história avança, Helena conquista a todos com sua beleza, inteligência e bondade. No entanto, segredos sobre seu passado começam a emergir, criando tensões e desafios para a jovem.`;
+                    break;
+                default:
+                    texto = 'Texto não encontrado.';
+            }
+
+            const novoContainer = document.createElement('div');
+            novoContainer.classList.add('alert-container');
+            novoContainer.innerHTML = `<p>${texto}</p><button onclick="fecharContainer(this.parentElement)">Fechar</button>`;
+
+            document.body.appendChild(novoContainer);
         }
 
+        function fecharContainer(container) {
+            container.remove();
+        }
     </script>
 </body>
 
